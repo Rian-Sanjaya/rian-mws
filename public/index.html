@@ -4,32 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Site</title>
+    <title>Rian - Mobile Web Specialist</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
     <style>
-        a {
-            text-decoration: none;
+        * {
+            box-sizing: border-box;
         }
-        
+
+        a {
+            display: block;
+            text-decoration: none;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+        }
+        a:hover,
+        a:visited,
+        a:active,
+        a:link {
+            text-decoration: none;
+            color: #333;
+        }
+
         .container {
             display: grid;
             width: 100%;
             grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: 60px 100px 100px 100px 30px;
+            grid-template-rows: 60px 100px 100px 100px 40px;
             grid-gap: 4px;
         }
 
         .menu {
-            background: lightblue;
+            background: #092B40;
             grid-column: 1/5;
-            padding: 5px;
+            padding: 0 20px;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+            font-size: 1.2em;
+            letter-spacing: .5em;
+            line-height: 60px;
+        }
+        .menu .r-symbol {
+            color: blue;
+            font-size: 1.5em;
         }
 
-        .menu img {
-            max-width: 50px;
-            height: auto;
-        }
         .sidebar {
-            background: lightyellow;
+            /* background: lightyellow; */
             grid-column: 1/2;
             grid-row: 2/5;
         }
@@ -40,28 +63,67 @@
         }
 
         .konten {
-            background: pink;
+            position: relative;
+            /* background: pink; */
             grid-column: 2/5;
-            padding: 10px;
+            border: 1px solid #000;
+        }
+        .konten .isi {
+            position: absolute;
+            font-family: 'Lato', sans-serif;
+            font-size: 1.2em;
+            z-index: 2;
+        }
+        .konten::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.4;
+            background-size: cover;
+        }
+        .konten.project1::after {
+            background: url('images/calculator.jpg') center center;
+        }
+        .konten.project2::after {
+            background: url('images/mapview.png') center center;
         }
 
         .footer {
-            background: lime;
+            background: #092B40;
             grid-column: 1/5;
             grid-row: 5/6;
-            line-height: 30px;
-            padding: 0 10px;
+            line-height: 40px;
+            padding: 0 20px;
+            font-family: 'Lato', sans-serif;
+            color: #fff;
+        }
+        .footer .mail-symbol {
+            color: rgba(161, 171, 226, 0.911);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="menu"><img src="images/myicon.png" alt="icon" srcset="images/myicon.svg"></div>
+        <div class="menu"><i class="fab fa-r-project r-symbol"></i> Mobile Web Specialist</div>
         <div class="sidebar"><img src="images/photo372.jpg" alt="photo"></div>
-        <div class="konten"><a href="project1/index.html" target="_blank">Menjumlahkan dua angka</a></div>
-        <div class="konten"><a href="project2/index.html" target="_blank">Lokasi Istimewa dengan Mapbox</a></div>
-        <div class="konten">Konten 3</div>
-        <div class="footer">Rian Sanjaya Ng</div>
+        <div class="konten project1">
+            <a href="project1/index.html" target="_blank" class="isi">
+                <div>Menjumlahkan dua angka</div>
+            </a>
+        </div>
+        <div class="konten project2"
+            ><a href="project2/index.html" target="_blank" class="isi">
+                <div>Lokasi Istimewa dengan Mapbox</div>
+            </a>
+        </div>
+        <div class="konten"><a href="#">Konten 3</a></div>
+        <div class="footer">Rian Sanjaya&nbsp;&nbsp;<i class="fas fa-envelope mail-symbol"></i>&nbsp;&nbsp;rian.sj@gmail.com</div>
     </div>
+
+    <script src="js/register-sw.js"></script>
 </body>
 </html>
