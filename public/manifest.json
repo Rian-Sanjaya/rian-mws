@@ -1,0 +1,14 @@
+{
+  "name": "Rian-MWS",
+  "short_name": "R-MWS",
+  "scope": "/",
+  "icons": [{
+    "src": "/images/icon.jpg",
+    "sizes": "512x512",
+    "type": "image/jpg"
+  }],
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#303F9F",
+  "background_color": "#303F9F"
+}

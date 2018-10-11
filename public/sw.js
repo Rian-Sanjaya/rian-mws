@@ -1,11 +1,15 @@
 var staticCacheName = 'rian-mws-static-v1';
 const cacheURLs = [
     '/',
+    'css/main.css',
+    'js/register-sw.js',
     '/images/calculator.jpg',
     '/images/mapview.png',
-    '/images/photo372.jpb',
+    '/images/photo372.jpg',
     '/project1/',
-    '/project2/'
+    '/project2/',
+    'https://fonts.googleapis.com/css?family=Lato:400,700',
+    'https://use.fontawesome.com/releases/v5.3.1/css/all.css'
 ];
 
 // self.addEventListener('install', event => {
@@ -22,7 +26,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', event => {
-    event.waitUntill(
+    event.waitUntil(
         caches.keys().then( cacheNames => {
             return Promise.all(
                 cacheNames.filter( cacheName => 

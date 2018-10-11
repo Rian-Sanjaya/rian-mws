@@ -2,21 +2,44 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Menjumlahkan Dua Angka</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/main.css">
     <style>
+        .right-menu a {
+            color: #fff;
+            float: right;
+            margin-top: 20px;
+        }
+
+        .title {
+            grid-column: 1/5;
+            grid-row: 2/3;
+        }
+
+        .calc {
+            grid-column: 1/5;
+            grid-row: 3/4;
+        }
+
         input {
             font-size: large
         }
     </style>
 </head>
 <body>
-    <h1>Tambahkan Dua angka</h1>
-    <div class="calc">
-        <input type="text" size="5" placeholder="0" />
-        +
-        <input type="text" size="5" placeholder="0" />
-        <button> = </button>
-        <input type="text" size="5" readonly />
-        <span id="message"></span>
+    <div class="container">
+        <div class="menu"><i class="fab fa-r-project r-symbol"></i> Mobile Web Specialist <span class="right-menu"><a href="../index.html"><i class="fas fa-home"></i></a></span></div>
+        <h1 class="title">Tambahkan Dua angka</h1>
+        <div class="calc">
+            <input type="text" size="5" placeholder="0" />
+            +
+            <input type="text" size="5" placeholder="0" />
+            <button> = </button>
+            <input type="text" size="5" readonly />
+            <span id="message"></span>
+        </div>
+        <div class="footer">Rian Sanjaya&nbsp;&nbsp;<i class="fas fa-envelope mail-symbol"></i>&nbsp;&nbsp;rian.sj@gmail.com</div>
     </div>
     <script src="add2numbers.js"></script>
 </body>
