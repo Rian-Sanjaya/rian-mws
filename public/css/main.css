@@ -95,6 +95,32 @@ a:link {
 }
 
 @media screen and (max-width: 531px) {
+    .container {
+        grid-template-rows: 60px 100px 100px 100px 100px 40px;
+    }
+
+    .sidebar {
+        grid-row: 2/3;
+        grid-column: 1/3;
+        overflow: hidden;
+    }
+
+    .konten {
+        grid-column: 1/5;
+    }
+
+    .konten.project1 {
+        grid-row: 3/4;
+    }
+
+    .konten.project2 {
+        grid-row: 4/5
+    }
+
+    .footer {
+        grid-row: 6/7;
+    }
+
     .menu {
         font-size: .8em;
         letter-spacing: .2em;
