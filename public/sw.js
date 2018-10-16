@@ -1,4 +1,5 @@
-var staticCacheName = 'rian-mws-static-v1';
+const staticCacheName = `rian-mws-static-v8`;
+
 const cacheURLs = [
     '/',
     'css/main.css',

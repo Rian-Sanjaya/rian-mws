@@ -1,26 +1,48 @@
-// if (!navigator.serviceWorker) return;
-
-// if (navigator.serviceWorker) {
-//     navigator.serviceWorker.register('/js/sw.js').then( reg => {
-//         console.log('Sevice Worker Registered.');
-//     }).catch( err => {
-//         console.log(`Service Worker Registered Failed: ${err}`);
-//     });    
-
-//     // Ensure refresh is only called once.
-//     // This works around a bug in "force update on reload".
-//     let refreshing;
-//     navigator.serviceWorker.addEventListener('controllerchange', function() {
-//         if (refreshing) return;
-//         window.location.reload();
-//         refreshing = true;
-//     });
-// }
-
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').then(function(registration) {
-    console.log('Service worker registered successfully', registration);
+    navigator.serviceWorker.register('sw.js').then(function(reg) {
+    console.log('Service worker registered successfully', reg);
+
+    if (!navigator.serviceWorker.controller) {
+      return;
+    }
+
+    if (reg.waiting) {
+      updateReady(reg.waiting);
+      return;
+    }
+
+    if (reg.installing) {
+      trackInstalling(reg.installing);
+      return;
+    }
+
+    reg.addEventListener('updatefound', function() {
+      trackInstalling(reg.installing);
+    });
+
   }).catch(function(err) {
     console.log('Service worker registration failed: ', err);
   });
+};
+
+// Ensure refresh is only called once.
+// This works around a bug in "force update on reload".
+var refreshing;
+navigator.serviceWorker.addEventListener('controllerchange', function() {
+  if (refreshing) return;
+  window.location.reload();
+  refreshing = true;
+});
+
+let trackInstalling = function(worker) {
+  var indexController = this;
+  worker.addEventListener('statechange', function() {
+    if (worker.state == 'installed') {
+      updateReady(worker);
+    }
+  });
+};
+
+let updateReady = function(worker) {
+  worker.postMessage({action: 'skipWaiting'});
 };
